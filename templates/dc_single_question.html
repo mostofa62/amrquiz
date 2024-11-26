@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Question</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+   
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timerElement = document.getElementById('timer');
+            
+            if (!timerElement) {
+                console.error('Timer element not found');
+                return;
+            }
+    
+            // Get the starting time from the Flask context (as passed to the template)
+            let timeLeft = {{ minutes }} * 60 + {{ seconds }};  // Convert minutes and seconds to total seconds
+    
+            // Set up the countdown function
+            function countdown() {
+                if (timeLeft <= 0) {
+                    // Automatically submit the quiz when time runs out
+                    const formElement = document.getElementById('quiz-form');
+                    if (formElement) {
+                        formElement.submit();  // Submit the form
+                    }
+                } else {
+                    let minutes = Math.floor(timeLeft / 60);  // Get remaining minutes
+                    let seconds = timeLeft % 60;  // Get remaining seconds
+                    // Update the timer element with the current time
+                    timerElement.innerText = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    timeLeft--;  // Decrement the time left by 1 second
+                }
+            }
+    
+            // Start the countdown every second
+            setInterval(countdown, 1000);
+        });
+    </script>
+    
+    
+</head>
+<body>
+    <div class="container mt-4">
+        {# <h2 class="text-center">Question {{ question.question_id }}</h2>#}
+        <p id="timer" class="text-center">Time left: {{ minutes }}:{{ '%02d' % seconds }}</p>
+        
+        <form id="quiz-form" action="/amrquiz/dc-submit-answer/{{ question.question_id }}" method="POST">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>{{ question.question_label }}</h5>
+                    {% if question.correct_answers|length > 1 %}
+                        <!-- Checkbox for multiple correct answers -->
+                        {% for option in question.options %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="answer" value="{{ option.option_id }}" id="{{ option.option_id }}">
+                                <label class="form-check-label" for="{{ option.option_id }}">
+                                    {{ option.option_label }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Radio button for single correct answer -->
+                        {% for option in question.options %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="answer" value="{{ option.option_id }}" id="{{ option.option_id }}">
+                                <label class="form-check-label" for="{{ option.option_id }}">
+                                    {{ option.option_label }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center mb-6">Student Registration Form</h1>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mb-4">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} p-3 bg-{{ 'green' if category == 'success' else 'red' }}-200 text-{{ 'green' if category == 'success' else 'red' }}-800 rounded mb-2">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" class="max-w-lg mx-auto bg-white p-6 shadow-lg rounded-lg">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700">Name</label>
+                <input type="text" name="name" id="name" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="age" class="block text-gray-700">Age</label>
+                <input type="number" name="age" id="age" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="gender" class="block text-gray-700">Gender</label>
+                <select name="gender" id="gender" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="college_name" class="block text-gray-700">Name of Medical College</label>
+                <input type="text" name="college_name" id="college_name" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="year_and_session" class="block text-gray-700">Year and Session</label>
+                <input type="text" name="year_and_session" id="year_and_session" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="contact_number" class="block text-gray-700">Contact Number</label>
+                <input type="text" name="contact_number" id="contact_number" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700">E-mail ID</label>
+                <input type="email" name="email" id="email" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded-md focus:outline-none hover:bg-blue-600">
+                Register Student
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>

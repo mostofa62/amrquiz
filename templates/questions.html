@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">Quiz</h2>
+        <form action="/amrquiz/submit-answers" method="POST">
+            {% for question in questions %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>{{ question.question_label }}</h5>
+                        {% if question.correct_answers|length > 1 %}
+                            <!-- Checkbox for multiple correct answers -->
+                            {% for option in question.options %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="{{ question.question_id }}" value="{{ option.option_id }}" id="{{ option.option_id }}">
+                                    <label class="form-check-label" for="{{ option.option_id }}">
+                                        {{ option.option_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <!-- Radio button for single correct answer -->
+                            {% for option in question.options %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="{{ question.question_id }}" value="{{ option.option_id }}" id="{{ option.option_id }}">
+                                    <label class="form-check-label" for="{{ option.option_id }}">
+                                        {{ option.option_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

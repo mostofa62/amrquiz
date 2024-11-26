@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            border-radius: 8px;
+        }
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Quiz Statistics</h1>
+    <div id="charts">
+        {% for question_id, stat in statistics.items() %}
+            <div class="chart-container">
+                <h3>{{ stat.question_label }}</h3>
+                <canvas id="chart-{{ question_id }}"></canvas>
+            </div>
+            <script>
+                const ctx{{ question_id }} = document.getElementById('chart-{{ question_id }}').getContext('2d');
+                const labels{{ question_id }} = {{ stat.answer_percentages | map(attribute='option_label') | list | tojson }};
+                const data{{ question_id }} = {{ stat.answer_percentages | map(attribute='percentage') | list | tojson }};
+                const colors{{ question_id }} = {{ stat.answer_percentages | map(attribute='is_correct') | list | tojson }}.map(isCorrect =>
+                    isCorrect ? 'rgba(52, 194, 12, 0.8)' : 'rgba(238, 52, 13, 0.8)'
+                );
+
+                new Chart(ctx{{ question_id }}, {
+                    type: 'bar',
+                    data: {
+                        labels: labels{{ question_id }},
+                        datasets: [{
+                            label: 'Percentage (%)',
+                            data: data{{ question_id }},
+                            backgroundColor: colors{{ question_id }},
+                            borderColor: colors{{ question_id }}.map(color => color.replace('0.8', '1')), // Darker border
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // Horizontal bar chart
+                        responsive: true,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: false,
+                                    text: 'Options'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.raw.toFixed(0) + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+        {% endfor %}
+    </div>
+</body>
+</html>
