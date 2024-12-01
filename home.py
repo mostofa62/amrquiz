@@ -14,7 +14,7 @@ students = my_col('students')
 
 
 
-def evaluate_students(questions, student_answers):
+def evaluate_students(questions, student_answers, table=students):
     """
     Evaluates students' answers, calculates scores, and ranks students based on score and time_elapsed.
 
@@ -32,7 +32,7 @@ def evaluate_students(questions, student_answers):
         question_scores = {}  # Store scores for individual questions
 
         # Fetch student details from the database
-        student_data = students.find_one({"_id": ObjectId(student_id)})
+        student_data = table.find_one({"_id": ObjectId(student_id)})
 
         #print(student_data)
 
@@ -97,11 +97,16 @@ def result():
 
     student_answers = list(results_collection.find(query))
 
+    counted = results_collection.count_documents(query)
+    student_count = students.count_documents({})
+
 
     questions = list(questions_collection.find({}).sort([("question_id", 1)]))
 
 
     student_results = evaluate_students(questions, student_answers)
+
+    
 
     # data_json = MongoJSONEncoder().encode(results)
     # results = json.loads(data_json)
@@ -110,10 +115,14 @@ def result():
     #     'result':results
     # })
 
-    return render_template('results.html', student_results=student_results)
+    return render_template('results.html', student_results=student_results,counted=counted, student_count=student_count)
 
 
 from collections import Counter
+import textwrap
+
+def split_text_with_textwrap(text, max_length):
+    return textwrap.wrap(text, width=max_length)
 
 def calculate_question_statistics(questions, student_answers):
     statistics = {}
@@ -122,7 +131,14 @@ def calculate_question_statistics(questions, student_answers):
         question_id = question["question_id"]
         question_label = question["question_label"]
         correct_answers = set(question["correct_answers"])  # Correct answers for the question
-        options = {option["option_id"]: option["option_label"] for option in question["options"]}
+        options = {option["option_id"]: split_text_with_textwrap(option["option_label"],50) for option in question["options"]}
+        print(options)
+        # options = []
+        # for option in question["options"]:
+        #     formatted_text = split_text_with_textwrap(option["option_label"], 20)
+        #     options.append({option["option_id"]:formatted_text})
+
+
         all_answers = []  # Collect all answers provided for this question
 
         # Collect answers for the current question from all students
@@ -138,7 +154,7 @@ def calculate_question_statistics(questions, student_answers):
             answer_percentages = [
                 {
                     "option_id": answer,
-                    "option_label": f"{options.get(answer, 'Unknown Option')} {'(Correct)' if answer in correct_answers else ''}",
+                    "option_label": f"{options.get(answer, 'Unknown Option')}",
                     "percentage": (count / total_responses) * 100,
                     "is_correct": answer in correct_answers
                 }
@@ -178,4 +194,105 @@ def home():
     #     'result':results
     #})
 
-    return render_template("statistics.html", statistics=statistics)
+    return render_template("statistics.html", statistics=statistics, title='Student')
+
+
+@app.route("/amrquiz/doctorstat", methods=["GET"])
+def doctor_stat():
+    #student_answers = list(results_collection_dc.find({}))
+    student_answers = list(results_collection_dc.find({}))
+
+
+    questions = list(questions_collection.find({}).sort([("question_id", 1)]))
+
+
+    statistics = calculate_question_statistics(questions, student_answers)
+    #return "<h1>Please dont come here its abandoned!</h1>"
+    #data_json = MongoJSONEncoder().encode(student_results)
+    #results = json.loads(data_json)
+
+    #return jsonify({
+    #     'result':results
+    #})
+
+    return render_template("statistics.html", statistics=statistics,title='Doctor')
+
+
+results_dfest = my_col("results_dfest")
+questions_dfest = my_col("questions_dfest")
+clg_students = my_col('clg_students')
+uni_students = my_col('uni_students')
+
+@app.route("/amrquiz/resultcollege", methods=["GET"])
+def result_df():
+
+    query = {
+        "$and": [{"q{}".format(i): {"$exists": True}} for i in range(1, 16)],
+        'type':1
+    }
+
+    student_answers = list(results_dfest.find(query))
+
+    counted = results_dfest.count_documents(query)
+    student_count = clg_students.count_documents({})
+
+
+    questions = list(questions_dfest.find({}).sort([("question_id", 1)]))
+
+
+    student_results = evaluate_students(questions, student_answers,clg_students)
+
+    return render_template('results_cu.html', student_results=student_results, counted=counted,student_count=student_count,title='College')
+
+
+@app.route("/amrquiz/resultuniversity", methods=["GET"])
+def result_dfu():
+
+    query = {
+        "$and": [{"q{}".format(i): {"$exists": True}} for i in range(1, 16)],
+        'type':2
+    }
+
+    student_answers = list(results_dfest.find(query))
+
+    counted = results_dfest.count_documents(query)
+    student_count = uni_students.count_documents({})
+
+
+    questions = list(questions_dfest.find({}).sort([("question_id", 1)]))
+
+
+    student_results = evaluate_students(questions, student_answers,uni_students)
+
+    return render_template('results_cu.html', student_results=student_results, counted=counted,student_count=student_count,title='University')
+
+
+@app.route("/amrquiz/collegestat", methods=["GET"])
+def college_stat():
+    #student_answers = list(results_collection_dc.find({}))
+    student_answers = list(results_dfest.find({'type':1}))
+
+
+    questions = list(questions_dfest.find({}).sort([("question_id", 1)]))
+
+
+    statistics = calculate_question_statistics(questions, student_answers)
+   
+
+    return render_template("statistics.html", statistics=statistics,title='College')
+
+
+
+@app.route("/amrquiz/universitystat", methods=["GET"])
+def university_stat():
+    #student_answers = list(results_collection_dc.find({}))
+    student_answers = list(results_dfest.find({'type':2}))
+
+
+    questions = list(questions_dfest.find({}).sort([("question_id", 1)]))
+
+
+    statistics = calculate_question_statistics(questions, student_answers)
+   
+
+    return render_template("statistics.html", statistics=statistics,title='University')

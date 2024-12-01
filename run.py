@@ -2,6 +2,7 @@ from app import app
 import os
 
 from questions import *
+from questions_df import*
 from students import *
 from questions_doctors import *
 from doctors import *
