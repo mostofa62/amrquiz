@@ -218,8 +218,11 @@ def doctor_stat():
     return render_template("statistics.html", statistics=statistics,title='Doctor')
 
 
-results_dfest = my_col("results_dfest")
-questions_dfest = my_col("questions_dfest")
+# results_dfest = my_col("results_dfest")
+# questions_dfest = my_col("questions_dfest")
+
+questions_dfest = my_col("question_hai")
+results_dfest = my_col("result_hai")
 clg_students = my_col('clg_students')
 uni_students = my_col('uni_students')
 
@@ -227,7 +230,7 @@ uni_students = my_col('uni_students')
 def result_df():
 
     query = {
-        "$and": [{"q{}".format(i): {"$exists": True}} for i in range(1, 16)],
+        "$and": [{"q{}".format(i): {"$exists": True}} for i in range(1, 10)],
         'type':1
     }
 
@@ -242,7 +245,7 @@ def result_df():
 
     student_results = evaluate_students(questions, student_answers,clg_students)
 
-    return render_template('results_cu.html', student_results=student_results, counted=counted,student_count=student_count,title='College')
+    return render_template('results_cu.html', student_results=student_results, counted=counted,student_count=student_count,title='Intern Doctors ')
 
 
 @app.route("/amrquiz/resultuniversity", methods=["GET"])
@@ -279,7 +282,7 @@ def college_stat():
     statistics = calculate_question_statistics(questions, student_answers)
    
 
-    return render_template("statistics.html", statistics=statistics,title='College')
+    return render_template("statistics.html", statistics=statistics,title='Intern Doctors')
 
 
 

@@ -78,7 +78,7 @@ def create_college():
         # Redirect to the startquiz URL
         return redirect(url_for("start_quiz_df"))
     
-    return render_template("create_student_cu.html",title='College')
+    return render_template("create_student_cu.html",title='')
 
 
 

@@ -7,8 +7,10 @@ from app import app
 from db import my_col
 from flask import flash, render_template, request, redirect, url_for, session
 
-questions_collection = my_col("questions_dfest")
-results_collection = my_col("results_dfest")
+#questions_collection = my_col("questions_dfest")
+#results_collection = my_col("results_dfest")
+questions_collection = my_col("question_hai")
+results_collection = my_col("result_hai")
 '''
 @app.route("/amrquiz", methods=["GET"])
 def display_questions():

@@ -1,0 +1,189 @@
+ [
+      {
+        "question_id": "q1",
+        "question_label": "Which one of the following is included in Bacterial Priority pathogen list of WHO in 2024 in critical priority pathogen list:",
+        "options": [
+          { "option_id": "q1a1", "option_label": "Pseudomonas aeruginosa carbapenem-resistant" },
+          { "option_id": "q1a2", "option_label": "Staphylococcus aureus methicillin-resistant" },
+          { "option_id": "q1a3", "option_label": "Acinetobacter baumannii carbapenem-resistant" },
+          { "option_id": "q1a4", "option_label": "Enterobacterales third-generation cephalosporin-resistant" },
+          { "option_id": "q1a5", "option_label": "Salmonella Typhi fluoroquinolone-resistant" }
+        ],
+        "correct_answers": ["q1a3", "q1a4"]
+      },
+      {
+        "question_id": "q2",
+        "question_label": "According to The Review on Antimicrobial Resistance Chaired By Jim O’neill in May 2016 what was the prediction of death attributable to AMR by 2050:",
+        "options": [
+          { "option_id": "q2a1", "option_label": "10 million" },
+          { "option_id": "q2a2", "option_label": "4.95 million" },
+          { "option_id": "q2a3", "option_label": "1·27 million" },
+          { "option_id": "q2a4", "option_label": "4·71 million" },
+          { "option_id": "q2a5", "option_label": "1·91 million" }
+        ],
+        "correct_answers": ["q2a1"]
+      },
+      {
+        "question_id": "q3",
+        "question_label": "Identify the reserve group of antibiotics according to WHO Access, Watch, Reserve (AWaRe) classification:",
+        "options": [
+          { "option_id": "q3a1", "option_label": "Ceftriaxone" },
+          { "option_id": "q3a2", "option_label": "Vancomycin" },
+          { "option_id": "q3a3", "option_label": "Meropenem" },
+          { "option_id": "q3a4", "option_label": "Linezolid" },
+          { "option_id": "q3a5", "option_label": "Ceftazidime-avibactam" }
+        ],
+        "correct_answers": ["q3a4", "q3a5"]
+      },
+      {
+        "question_id": "q4",
+        "question_label": "What is the primary objective of the Global Action Plan (GAP) on Antimicrobial Resistance (AMR) developed by the World Health Organization (WHO)?",
+        "options": [
+          { "option_id": "q4a1", "option_label": "To eliminate the use of antibiotics in agriculture." },
+          { "option_id": "q4a2", "option_label": "To develop new antibiotics to replace all existing ones." },
+          { "option_id": "q4a3", "option_label": "To ensure the prevention and control of infections in humans and animals." },
+          { "option_id": "q4a4", "option_label": "To promote the use of traditional medicine over antibiotics." },
+          { "option_id": "q4a5", "option_label": "To reduce the cost of antibiotics worldwide." }
+        ],
+        "correct_answers": ["q4a3"]
+      },
+      {
+        "question_id": "q5",
+        "question_label": "What is meant by 'selection pressure' in the context of antibiotic use?",
+        "options": [
+          { "option_id": "q5a1", "option_label": "The process by which bacteria develop resistance to antibiotics due to genetic mutations." },
+          { "option_id": "q5a2", "option_label": "The increased effectiveness of antibiotics over time as bacteria become more susceptible." },
+          { "option_id": "q5a3", "option_label": "The environmental factors that favor the survival of antibiotic-resistant bacteria over susceptible ones." },
+          { "option_id": "q5a4", "option_label": "The reduction in the number of bacterial infections due to widespread antibiotic use." },
+          { "option_id": "q5a5", "option_label": "The ability of antibiotics to kill all types of bacteria, including resistant strains." }
+        ],
+        "correct_answers": ["q5a3"]
+      },
+      {
+        "question_id": "q6",
+        "question_label": "What is the primary goal of the One Health Approach in combating antimicrobial resistance (AMR)?",
+        "options": [
+          { "option_id": "q6a1", "option_label": "To develop new antibiotics exclusively for human use." },
+          { "option_id": "q6a2", "option_label": "To integrate efforts across human, animal, and environmental health sectors." },
+          { "option_id": "q6a3", "option_label": "To eliminate the use of antibiotics in agriculture." },
+          { "option_id": "q6a4", "option_label": "To focus solely on reducing antibiotic use in hospitals." },
+          { "option_id": "q6a5", "option_label": "To promote the use of traditional medicine over antibiotics." }
+        ],
+        "correct_answers": ["q6a2"]
+      },
+
+      {
+        "question_id": "q7",
+        "question_label": "What is considered the main cause of antibiotic resistance?",
+        "options": [
+          { "option_id": "q7a1", "option_label": "Overuse and misuse of antibiotics in human medicine." },
+          { "option_id": "q7a2", "option_label": "Natural evolution of bacteria." },
+          { "option_id": "q7a3", "option_label": "Lack of new antibiotic development." },
+          { "option_id": "q7a4", "option_label": "Poor hygiene and sanitation practices." },
+          { "option_id": "q7a5", "option_label": "Global travel and trade." }
+        ],
+        "correct_answers": ["q7a1"]
+      },
+      {
+        "question_id": "q8",
+        "question_label": "Why is AMR surveillance crucial in the containment of antimicrobial resistance?",
+        "options": [
+          { "option_id": "q8a1", "option_label": "It helps in the development of new antibiotics." },
+          { "option_id": "q8a2", "option_label": "It monitors the effectiveness of current treatment protocols." },
+          { "option_id": "q8a3", "option_label": "It identifies trends and patterns in antibiotic resistance." },
+          { "option_id": "q8a4", "option_label": "It reduces the cost of healthcare." },
+          { "option_id": "q8a5", "option_label": "It eliminates the need for antibiotics in agriculture." }
+        ],
+        "correct_answers": ["q8a3"]
+      },
+      {
+        "question_id": "q9",
+        "question_label": "How do vaccines contribute to the containment of antimicrobial resistance (AMR)?",
+        "options": [
+          { "option_id": "q9a1", "option_label": "By directly killing antibiotic-resistant bacteria." },
+          { "option_id": "q9a2", "option_label": "By reducing the incidence of infections, thereby decreasing the need for antibiotics." },
+          { "option_id": "q9a3", "option_label": "By increasing the effectiveness of existing antibiotics." },
+          { "option_id": "q9a4", "option_label": "By promoting the development of new antibiotics." },
+          { "option_id": "q9a5", "option_label": "By eliminating the need for hygiene and sanitation practices." }
+        ],
+        "correct_answers": ["q9a2"]
+      },
+      {
+        "question_id": "q10",
+        "question_label": "What is the primary goal of antimicrobial stewardship programs?",
+        "options": [
+          { "option_id": "q10a1", "option_label": "To eliminate the use of antibiotics in agriculture." },
+          { "option_id": "q10a2", "option_label": "To ensure the appropriate use of antibiotics to improve patient outcomes and reduce resistance." },
+          { "option_id": "q10a3", "option_label": "To develop new antibiotics to replace existing ones." },
+          { "option_id": "q10a4", "option_label": "To promote the use of over-the-counter antibiotics." },
+          { "option_id": "q10a5", "option_label": "To reduce the cost of antibiotics worldwide." }
+        ],
+        "correct_answers": ["q10a2"]
+      },
+      {
+        "question_id": "q11",
+        "question_label": "Regarding antibiogram which of the following statement/s is/are correct?",
+        "options": [
+          { "option_id": "q11a1", "option_label": "It is one of the main duties of a microbiology laboratory to prepare antibiogram." },
+          { "option_id": "q11a2", "option_label": "Help to identify the most effective antibiotics for treating specific bacterial infections." },
+          { "option_id": "q11a3", "option_label": "It should be prepared quarterly a year." },
+          { "option_id": "q11a4", "option_label": "It reduces the cost of antibiotic treatments." },
+          { "option_id": "q11a5", "option_label": "It promotes the use of over-the-counter antibiotics." }
+        ],
+        "correct_answers": ["q11a1", "q11a2"]
+      },
+      {
+        "question_id": "q12",
+        "question_label": "What is referred to as the 'Golden Age of Antibiotics'?",
+        "options": [
+          { "option_id": "q12a1", "option_label": "The period when antibiotics were first discovered and widely used, leading to significant reductions in infectious diseases." },
+          { "option_id": "q12a2", "option_label": "The era when antibiotics were used exclusively in agriculture." },
+          { "option_id": "q12a3", "option_label": "The time when antibiotics were replaced by vaccines." },
+          { "option_id": "q12a4", "option_label": "The period when antibiotic resistance was first identified." },
+          { "option_id": "q12a5", "option_label": "The era when antibiotics were banned due to side effects." }
+        ],
+        "correct_answers": ["q12a1"]
+      },
+      {
+        "question_id": "q13",
+        "question_label": "Which organizations are the National Coordination Center and Sectoral Coordination Center (Human health) for AMR surveillance in Bangladesh?",
+        "options": [
+          { "option_id": "q13a1", "option_label": "IEDCR and CDC, DGHS" },
+          { "option_id": "q13a2", "option_label": "BSMMU and IEDCR" },
+          { "option_id": "q13a3", "option_label": "DMCH and BSMMU" },
+          { "option_id": "q13a4", "option_label": "NIPSOM and CDC, DGHS" },
+          { "option_id": "q13a5", "option_label": "CDC, DGHS and IEDCR" }
+        ],
+        "correct_answers": ["q13a5"]
+      },
+      {
+        "question_id": "q14",
+        "question_label": "What is the primary concern associated with Extended-Spectrum Beta-Lactamase (ESBL) producing bacteria?",
+        "options": [
+          { "option_id": "q14a1", "option_label": "They are resistant to all antibiotics." },
+          { "option_id": "q14a2", "option_label": "They can produce toxins that cause severe illness." },
+          { "option_id": "q14a3", "option_label": "They are resistant to a wide range of beta-lactam antibiotics, including third-generation cephalosporins." },
+          { "option_id": "q14a4", "option_label": "They can only infect immunocompromised individuals." },
+          { "option_id": "q14a5", "option_label": "They are easily treated with standard antibiotics." }
+        ],
+        "correct_answers": ["q14a3"]
+      },
+      {
+        "question_id": "q15",
+        "question_label": "What is the primary concern associated with Methicillin-Resistant Staphylococcus Aureus (MRSA)?",
+        "options": [
+          { "option_id": "q15a1", "option_label": "It is resistant to all antibiotics." },
+          { "option_id": "q15a2", "option_label": "It can produce toxins that cause severe illness." },
+          { "option_id": "q15a3", "option_label": "It is resistant to methicillin and other beta-lactam antibiotics, making infections difficult to treat." },
+          { "option_id": "q15a4", "option_label": "It can only infect immunocompromised individuals." },
+          { "option_id": "q15a5", "option_label": "It is easily treated with standard antibiotics." }
+        ],
+        "correct_answers": ["q15a3"]
+      }
+
+      
+      
+      
+    ]
+ 
+  
